@@ -31,7 +31,7 @@ def compare_to_history(auc):
     recs = map(json.loads, open(DB_FN).readlines())
     df = pd.DataFrame.from_records(recs)
     print '[compare_to_history] N = %d' % (df.shape[0])
-    print '[compare_to_history] latest auc of %.6f is in the %.1fth percentile' % (auc, percentileofscore(df.auc.values, auc))
+    print '[compare_to_history] latest auc of %.6f is in the %.1fth percentile' % (auc, percentileofscore(df.auc.unique(), auc))
 
 
 def predict_and_report(est, X, y, cv=5):
